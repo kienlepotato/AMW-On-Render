@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="bookstyle.css" />
+<head>
+     <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+
+
+      <% if (user.role === 'ADMIN') { %>
+  <li><a href="/myappointments">My Appointments</a></li>
+  <li><a href="/mymechanics">My Staff</a></li>
+  <li><a href="/mycustomers">My Customers</a></li>
+  <li><a href="/adminbooking">Admin Booking</a></li>
+  <li><a href="/adduser">Add User</a></li>
+  <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+  <meta charset="UTF-8">
+  <title>Add New User</title>
+  <style>
+    form {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+    }
+    .success {
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+<!-- error message -->
+<% if (error) { %>
+  <div id="errorPopup" style="position: fixed; top: 20px; left: 20px; background-color: #f44336; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 1000;">
+    <%= error %>
+    <button onclick="document.getElementById('errorPopup').style.display='none'" style="background: none; border: none; color: white; font-weight: bold; float: right;">&times;</button>
+  </div>
+<% } %>
+
+  <h1 style="text-align:center;">Add New User</h1>
+
+  <% if (success) { %>
+    <p class="success">✅ User created successfully!</p>
+  <% } %>
+
+  <form method="POST" action="/adduser">
+    <label>First Name:</label>
+    <input name="firstname" required>
+
+    <label>Last Name:</label>
+    <input name="lastname" required>
+
+    <label>Email Address:</label>
+    <input name="emailAddress" type="email" required>
+
+    <label>Phone Number:</label>
+    <input name="phoneNumber" required>
+
+    <label>Password:</label>
+    <input name="password" type="password" required>
+
+    <label>User Role:</label>
+    <select name="userType" required>
+      <option value="ADMIN">Admin</option>
+      <option value="SUPERVISOR">Supervisor</option>
+      <option value="MECHANIC">Mechanic</option>
+      <option value="CUSTOMER">Customer</option>
+    </select>
+
+    <button type="submit">Add User</button>
+  </form>
+</body>
+</html>

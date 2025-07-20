@@ -1,0 +1,136 @@
+ <link rel="stylesheet" href="bookstyle.css" />
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+
+
+      <% if (user.role === 'ADMIN') { %>
+  <li><a href="/myappointments">My Appointments</a></li>
+  <li><a href="/mymechanics">My Staff</a></li>
+  <li><a href="/mycustomers">My Customers</a></li>
+  <li><a href="/adminbooking">Admin Booking</a></li>
+  <li><a href="/adduser">Add User</a></li>
+  <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+<!-- error message -->
+<% if (error) { %>
+  <div id="errorPopup" style="position: fixed; top: 20px; left: 20px; background-color: #f44336; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); z-index: 1000;">
+    <%= error %>
+    <button onclick="document.getElementById('errorPopup').style.display='none'" style="background: none; border: none; color: white; font-weight: bold; float: right;">&times;</button>
+  </div>
+<% } %>
+
+  <h1 style="text-align:center;">Add New User</h1>
+
+  <% if (success) { %>
+    <p class="success">✅ User created successfully!</p>
+  <% } %>
+<h1>Admin Service Booking</h1>  
+<% if (customers.length === 0) { %>
+  <p>No customers available.</p>
+<% } else { %>
+<form action="/adminbooking" method="POST">
+  <label>Customer:</label>
+  <select name="customerId" required>
+    <% customers.forEach(c => { %>
+      <option value="<%= c.UserID %>"><%= c.FirstName %> <%= c.LastName %></option>
+    <% }) %>
+  </select><br>
+
+  <label>Registration:</label>
+  <input type="text" name="registration" required><br>
+
+  <label>Appointment Date:</label>
+  <input type="date" name="appointmentDate" required><br>
+
+  <label>Time Slot:</label>
+  <select name="appointmentTime" required>
+   <option value="">Select a time slot</option>
+  <option value="08:00">08:00 - 09:00</option>
+  <option value="09:00">09:00 - 10:00</option>
+  <option value="10:00">10:00 - 11:00</option>
+  <option value="11:00">11:00 - 12:00</option>
+  <option value="12:00">12:00 - 13:00</option>
+  <option value="13:00">13:00 - 14:00</option>
+  <option value="14:00">14:00 - 15:00</option>
+  <option value="15:00">15:00 - 16:00</option>
+  <option value="16:00">16:00 - 17:00</option>
+  <option value="17:00">17:00 - 18:00</option>
+  </select><br>
+
+     <label>Location:</label>
+    <select name="location" required>
+      <option value="">Select Location</option>
+            <option value="Belconnen">Belconnen</option>
+            <option value="Gungahlin">Gungahlin</option>
+            <option value="City">City</option>
+            <option value="Woden">Woden</option>
+    </select><br>
+
+  <label>Service Type:</label>
+  <select name="serviceType" required onchange="toggleServiceFields(this.value)">
+    <option value="">Select A Service</option>
+    <option value="CLEAN">Cleaning</option>
+    <option value="REPAIR">Repair</option>
+    <option value="SERVICE">Servicing</option>
+  </select><br>
+
+  <div id="clean-fields" style="display: none;">
+    <label>Clean Type:</label>
+    <select name="cleanType">
+      <option value="Interior">Interior</option>
+      <option value="Exterior">Exterior</option>
+      <option value="Full Clean">Full Clean</option>
+    </select><br>
+  </div>
+
+  <div id="repair-fields" style="display: none;">
+    <label>Repair Type:</label>
+    <select name="repairType">
+      <option value="Minor">Minor</option>
+      <option value="Major">Major</option>
+      <option value="Specific">Specific</option>
+    </select><br>
+    <label>Specific Repairs (if any):</label>
+    <input type="text" name="specificRepairs"><br>
+  </div>
+
+  <div id="service-fields" style="display: none;">
+    <label>Service Type:</label>
+    <select name="servicingType">
+      <option value="General">General</option>
+      <option value="Essential">Essential</option>
+      <option value="Specific">Specific</option>
+    </select><br>
+    <label>Specific Details (if any):</label>
+    <input type="text" name="specificDetails"><br>
+    <label>Odometer KM:</label>
+    <input type="number" name="odometer"><br>
+    <label>Logbook Interval:</label>
+    <input type="number" name="logbookInterval"><br>
+  </div>
+
+  <button type="submit">Book Appointment</button>
+</form>
+<% } %> <!-- CLOSE else block -->
+
+<script>
+function toggleServiceFields(type) {
+  document.getElementById('clean-fields').style.display = type === 'CLEAN' ? 'block' : 'none';
+  document.getElementById('repair-fields').style.display = type === 'REPAIR' ? 'block' : 'none';
+  document.getElementById('service-fields').style.display = type === 'SERVICE' ? 'block' : 'none';
+}
+</script>
+

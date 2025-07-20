@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - AMW Service Centre</title>
+  <link rel="stylesheet" href="aboutusstyle.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="AMW Logo" class="car-icon" />
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/services">Our Services</a></li> 
+      <% if (user) { %>
+    <!-- User logged in: show logout -->
+    <li>
+      <form action="/logout" method="get" style="display:inline;">
+        <button type="submit" class="register-btn">Logout</button>
+      </form>
+    </li>
+  <% } else { %>
+    <!-- User not logged in: show login -->
+    <li><a href="/login" class="register-btn">Login</a></li>
+  <% } %>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>About AMW</h1>
+    <p>Licensed Vehicle Service Centres Across Australia</p>
+  </header>
+
+  <section class="facilities">
+    <h2>Our Facilities</h2>
+    <p>Each AMW service centre consists of three main areas:</p>
+    <ul>
+      <li><strong>Garage:</strong> Where our skilled mechanics perform repairs and services.</li>
+      <li><strong>Vehicle Inspection Unit:</strong> For thorough checks and diagnostics.</li>
+      <li><strong>Admin Office:</strong> Manages appointments and customer inquiries.</li>
+    </ul>
+    <img
+      src="https://www.shutterstock.com/image-photo/car-service-centre-auto-repair-600nw-2090487736.jpg"
+      alt="Interior view of an auto service center"
+      class="section-image"
+    />
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <p>AMW provides comprehensive automotive care through the following service categories:</p>
+    <ul>
+      <li><strong>Cleaning Services:</strong> Includes interior and exterior cleaning. Customers can choose the type of cleaning required.</li>
+      <li><strong>Repair Services:</strong> Tailored repairs tracked by status – Scheduled, In Progress, and Complete. Customers can specify the repairs needed.</li>
+      <li><strong>Servicing:</strong> We offer General, Essential, and Specific services. Specific services include tasks like oil and filter changes, brake and clutch servicing, and more, with odometer and logbook tracking for accuracy.</li>
+    </ul>
+    <img
+      src="https://canberradaily.com.au/wp-content/uploads/2021/09/the-best-car-service-mechanic-Canberra-1.jpg"
+      alt="Mechanic servicing a car"
+      class="section-image"
+    />
+  </section>
+
+  <section class="appointments">
+    <h2>Appointments</h2>
+    <p><strong>All services are by appointment only.</strong> Appointments can be booked through our website or by contacting our call centre directly. Time slots are assigned based on availability and service type.</p>
+    <img
+      src="https://www.virtualreception.com.au/wp-content/uploads/2023/08/remote-receptionist-service-working.jpg"
+      alt="Call centre operator assisting customer"
+      class="section-image"
+    />
+  </section>
+
+  <section class="team">
+    <h2>Our Team</h2>
+    <p>Each service centre is staffed with 10 mechanics and 4 supervisors. Supervisors are responsible for overseeing each client's job from start to finish. The call centre is managed by two employees and overseen by an office manager. Everyone works on a rotating shift roster to ensure consistent, high-quality service delivery.</p>
+    <img
+      src="https://nextgen-images.cdn.dealersolutions.com.au/modular.multisite.dealer.solutions/wp-content/uploads/sites/2064/2024/05/ZA-2024-05-New-Service-Centre-Landing-Page-Banner-07-720x405.png?format=webp&width=720"
+      alt="AMW Service Centre Team"
+      class="section-image"
+    />
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AMW Service Centre. All rights reserved. We are closed on all Australian public holidays.</p>
+  </footer>
+</body>
+</html>

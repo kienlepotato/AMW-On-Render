@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Mechanics</title>
+  <link rel="stylesheet" href="/vehiclestyle.css">
+</head>
+<body>
+
+
+      <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+              <% if (user.role === 'CUSTOMER') { %>
+              <li><a href="/services">Book Appointment</a></li>
+              <li><a href="/myvehicles">My Vehicles</a></li>
+<% } %>    
+      <li><a href="/myappointments">My Appointments</a></li>
+      <% if (user.role === 'MECHANIC') { %>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>      
+      <% if (user.role === 'SUPERVISOR') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>
+      <% if (user.role === 'ADMIN') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+      <li><a href="/adminbooking">Admin Booking</a></li>
+      <li><a href="/adduser">Add User</a></li>
+      <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+  <h1>My Staff</h1>
+    <!-- 🔽 Mechanics Table -->
+<h2>Mechanics</h2>
+<% if (mechanics && mechanics.length > 0) { %>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% mechanics.forEach(mechanic => { %>
+        <tr>
+          <td><%= mechanic.UserID %></td>
+          <td><%= mechanic.FirstName %></td>
+          <td><%= mechanic.LastName %></td>
+          <td><%= mechanic.PhoneNumber %></td>
+          <td><%= mechanic.EmailAddress %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>No Mechanics found.</p>
+<% } %>
+
+  <!-- 🔽 Supervisors Table -->
+<h2>Supervisors</h2>
+<% if (supervisors && supervisors.length > 0) { %>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% supervisors.forEach(supervisor => { %>
+        <tr>
+          <td><%= supervisor.UserID %></td>
+          <td><%= supervisor.FirstName %></td>
+          <td><%= supervisor.LastName %></td>
+          <td><%= supervisor.PhoneNumber %></td>
+          <td><%= supervisor.EmailAddress %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>No supervisors found.</p>
+<% } %>
+
+
+ <!-- 🔽 Admins Table -->
+<h2>Administrators</h2>
+<% if (admins && admins.length > 0) { %>
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% admins.forEach(admin => { %>
+        <tr>
+          <td><%= admin.UserID %></td>
+          <td><%= admin.FirstName %></td>
+          <td><%= admin.LastName %></td>
+          <td><%= admin.PhoneNumber %></td>
+          <td><%= admin.EmailAddress %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>No admins found.</p>
+<% } %>
+</body>
+</html>

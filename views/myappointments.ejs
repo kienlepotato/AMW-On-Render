@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Appointments</title>
+  <link rel="stylesheet" href="/vehiclestyle.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+            <% if (user.role === 'CUSTOMER') { %>
+              <li><a href="/customerbooking">Book Appointment</a></li>
+              <li><a href="/myvehicles">My Vehicles</a></li>
+<% } %>    
+      <li><a href="/myappointments">My Appointments</a></li>
+      <% if (user.role === 'MECHANIC') { %>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>      
+      <% if (user.role === 'SUPERVISOR') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>
+      <% if (user.role === 'ADMIN') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+      <li><a href="/adminbooking">Admin Booking</a></li>
+      <li><a href="/adduser">Add User</a></li>
+      <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+  <h1>Appointments for <%= user.firstname %> <%= user.lastname %></h1>
+
+<% if (success) { %>
+  <div style="background: #d4edda; color: #155724; padding: 15px; margin: 10px; border: 1px solid #c3e6cb; border-radius: 5px;">
+    ✅ <%= success %>
+  </div>
+<% } %>
+
+<% if (error) { %>
+  <div style="background: #f8d7da; color: #721c24; padding: 15px; margin: 10px; border: 1px solid #f5c6cb; border-radius: 5px;">
+    ⚠️ <%= error %>
+  </div>
+<% } %>  
+
+  <!-- Filter Buttons -->
+<button onclick="filterToday()" id="todayBtn" class="filter-btn">Show Today's Appointments</button>
+<button onclick="showAll()" id="allBtn" class="filter-btn" style="display:none;">Show All Appointments</button>
+
+
+
+
+
+  <h2>🧼 Cleaning Appointments</h2>
+  <% if (cleanAppointments.length === 0) { %>
+    <p>No cleaning appointments.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Type</th>
+          <th>Reg</th><th>Make</th><th>Model</th><th>Mechanic</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cleanAppointments.forEach(a => { %>
+          <tr>
+            <td><%= a.CustomerFirstName %> <%= a.CustomerLastName %></td>
+            <td><%= a.AppointmentDate %></td>
+            <td><%= a.TimeSlot %></td>
+            <td><%= a.Location %></td>
+            <td>
+  <% if (user.role === 'MECHANIC') { %>
+    <form method="POST" action="/update-status/<%= a.AppointmentID %>">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <select name="AppointmentStatus" required>
+        <option value="Scheduled" <%= a.AppointmentStatus === 'Scheduled' ? 'selected' : '' %>>Scheduled</option>
+        <option value="In Progress" <%= a.AppointmentStatus === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="Completed" <%= a.AppointmentStatus === 'Completed' ? 'selected' : '' %>>Completed</option>
+        <option value="Cancelled" <%= a.AppointmentStatus === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+      </select>
+      <button type="submit">Save</button>
+    </form>
+  <% } else { %>
+    <%= a.AppointmentStatus %>
+  <% } %>
+</td>
+
+            <td><%= a.CleanType %></td>
+            <td><%= a.Registration %></td>
+            <td><%= a.Make %></td>
+            <td><%= a.Model %></td>
+            <td> 
+    <% if (user.role === 'SUPERVISOR') { %>
+      <%= a.MechanicName || 'Unassigned' %>
+    <form action="/assign/<%= a.AppointmentID %>" method="POST" style="display:inline;">
+      <input type="number" name="MechanicAssigned" value="<%= a.MechanicAssigned || '' %>" style="width:60px;" required>
+      <button type="submit">Update</button>
+    </form>
+  <% } else { %>
+    <%= a.MechanicName || 'Unassigned' %>
+  <% } %>
+    </td>
+            <<td>
+  <% if (a.AppointmentStatus !== 'Cancelled') { %>
+    <% if (user.role === 'SUPERVISOR') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    <% } %>
+    <% if (user.role === 'ADMIN') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    </form>
+      <form method="GET" action="/invoice/<%= a.AppointmentID %>" style="margin-top: 5px;">
+        <button type="submit">📧 Email Invoice</button>
+      </form>
+    <% } %>
+  <% } else { %>
+    Cancelled
+  <% } %>
+</td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+
+  <h2>🔧 Repair Appointments</h2>
+  <% if (repairAppointments.length === 0) { %>
+    <p>No repair appointments.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Type</th><th>Details</th>
+          <th>Reg</th><th>Make</th><th>Model</th><th>Mechanic</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% repairAppointments.forEach(a => { %>
+          <tr>
+            <td><%= a.CustomerFirstName %> <%= a.CustomerLastName %></td>
+            <td><%= a.AppointmentDate %></td>
+            <td><%= a.TimeSlot %></td>
+            <td><%= a.Location %></td>
+<td>
+  <% if (user.role === 'MECHANIC') { %>
+    <form method="POST" action="/update-status/<%= a.AppointmentID %>">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <select name="AppointmentStatus" required>
+        <option value="Scheduled" <%= a.AppointmentStatus === 'Scheduled' ? 'selected' : '' %>>Scheduled</option>
+        <option value="In Progress" <%= a.AppointmentStatus === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="Completed" <%= a.AppointmentStatus === 'Completed' ? 'selected' : '' %>>Completed</option>
+        <option value="Cancelled" <%= a.AppointmentStatus === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+      </select>
+      <button type="submit">Save</button>
+    </form>
+  <% } else { %>
+    <%= a.AppointmentStatus %>
+  <% } %>
+</td>
+            <td><%= a.RepairType %></td>
+            <td><%= a.SpecificRepairs %></td>
+            <td><%= a.Registration %></td>
+            <td><%= a.Make %></td>
+            <td><%= a.Model %></td>
+            <td>  
+   <% if (user.role === 'SUPERVISOR') { %>
+    <%= a.MechanicName || 'Unassigned' %>
+    <form action="/assign/<%= a.AppointmentID %>" method="POST" style="display:inline;">
+      <input type="number" name="MechanicAssigned" value="<%= a.MechanicAssigned || '' %>" style="width:60px;" required>
+      <button type="submit">Update</button>
+    </form>
+  <% } else { %>
+    <%= a.MechanicName || 'Unassigned' %>
+  <% } %>
+    </td>
+            <<td>
+  <% if (a.AppointmentStatus !== 'Cancelled') { %>
+    <% if (user.role === 'SUPERVISOR') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    <% } %>
+    <% if (user.role === 'ADMIN') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    </form>
+      <form method="GET" action="/invoice/<%= a.AppointmentID %>" style="margin-top: 5px;">
+        <button type="submit">📧 Email Invoice</button>
+      </form>
+    <% } %>
+  <% } else { %>
+    Cancelled
+  <% } %>
+</td>
+
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+
+  <h2>🛠️ Car Servicing Appointments</h2>
+  <% if (serviceAppointments.length === 0) { %>
+    <p>No servicing appointments.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Date</th><th>Time</th><th>Location</th><th>Status</th><th>Service Type</th>
+          <th>Specific Service</th><th>Odometer</th><th>Interval</th><th>Reg</th><th>Make</th><th>Model</th><th>Mechanic</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% serviceAppointments.forEach(a => { %>
+          <tr>
+            <td><%= a.CustomerFirstName %> <%= a.CustomerLastName %></td>
+            <td><%= a.AppointmentDate %></td>
+            <td><%= a.TimeSlot %></td>
+            <td><%= a.Location %></td>
+<td>
+  <% if (user.role === 'MECHANIC') { %>
+    <form method="POST" action="/update-status/<%= a.AppointmentID %>">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <select name="AppointmentStatus" required>
+        <option value="Scheduled" <%= a.AppointmentStatus === 'Scheduled' ? 'selected' : '' %>>Scheduled</option>
+        <option value="In Progress" <%= a.AppointmentStatus === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="Completed" <%= a.AppointmentStatus === 'Completed' ? 'selected' : '' %>>Completed</option>
+        <option value="Cancelled" <%= a.AppointmentStatus === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+      </select>
+      <button type="submit">Save</button>
+    </form>
+  <% } else { %>
+    <%= a.AppointmentStatus %>
+  <% } %>
+</td>
+            <td><%= a.ServiceType %></td>
+            <td><%= a.SpecificService %></td>
+            <td><%= a.OdometerKM %> km</td>
+            <td><%= a.LogbookInterval %> km</td>
+            <td><%= a.Registration %></td>
+            <td><%= a.Make %></td>
+            <td><%= a.Model %></td>
+            <td> 
+<% if (user.role === 'SUPERVISOR') { %>
+  <%= a.MechanicName || 'Unassigned' %>
+    <form action="/assign/<%= a.AppointmentID %>" method="POST" style="display:inline;">
+      <input type="number" name="MechanicAssigned" value="<%= a.MechanicAssigned || '' %>" style="width:60px;" required>
+      <button type="submit">Update</button>
+    </form>
+  <% } else { %>
+    <%= a.MechanicName || 'Unassigned' %>
+  <% } %>
+           </td>
+                        <<td>
+  <% if (a.AppointmentStatus !== 'Cancelled') { %>
+    <% if (user.role === 'SUPERVISOR') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    <% } %>
+    <% if (user.role === 'ADMIN') { %>
+    <form method="POST" action="/cancel">
+      <input type="hidden" name="AppointmentID" value="<%= a.AppointmentID %>">
+      <button type="submit" onclick="return confirm('Cancel this appointment?')">Cancel</button>
+    </form>
+      <form method="GET" action="/invoice/<%= a.AppointmentID %>" style="margin-top: 5px;">
+        <button type="submit">📧 Email Invoice</button>
+      </form>
+    <% } %>
+  <% } else { %>
+    Cancelled
+  <% } %>
+</td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+
+  <p><a href="/">← Back to home</a></p>
+
+
+
+
+   <!-- JavaScript to Filter by Today's Date -->
+  <script>
+    function getTodayDate() {
+      const today = new Date();
+      return today.toISOString().slice(0, 10); // Format: YYYY-MM-DD
+    }
+
+    function filterToday() {
+      const today = getTodayDate();
+      const rows = document.querySelectorAll("table tbody tr");
+
+      rows.forEach(row => {
+        const dateCell = row.querySelector("td:nth-child(2)");
+        if (dateCell) {
+          const rowDate = dateCell.textContent.trim();
+          if (rowDate === today) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        }
+      });
+
+      document.getElementById("todayBtn").style.display = "none";
+      document.getElementById("allBtn").style.display = "inline";
+    }
+
+    function showAll() {
+      const rows = document.querySelectorAll("table tbody tr");
+      rows.forEach(row => {
+        row.style.display = "";
+      });
+
+      document.getElementById("todayBtn").style.display = "inline";
+      document.getElementById("allBtn").style.display = "none";
+    }
+  </script>
+</body>
+</html>

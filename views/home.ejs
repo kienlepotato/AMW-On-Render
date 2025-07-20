@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMW Service Centre - Home</title>
+  <link rel="stylesheet" href="homestyle.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/services">Our Services</a></li> 
+      <% if (user) { %>
+        <li>
+          <form action="/logout" method="get" style="display:inline;">
+            <button type="submit" class="register-btn">Logout</button>
+          </form>
+        </li>
+      <% } else { %>
+        <li><a href="/login" class="register-btn">Login</a></li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="front-img">
+      <img src="amw-frontpage-img.jpeg" alt="AMW Front Page Image" class="front-page-img" />
+    </div>
+
+    <header>
+      <h1>Welcome to AMW Service Centre</h1>
+      <p>Professional and reliable car servicing across Australia</p>
+    </header>
+
+    <div class="services">
+      <h1>WHAT WE OFFER</h1>
+      <p>We offer expert mechanical repairs, routine servicing, and high-quality cleaning — everything your car needs to stay reliable, safe, and spotless.</p>
+
+      <div class="service-cards">
+        <div class="service-card">
+          <h2>General Services</h2>
+          <p>Book a general, essential, or specific service to keep your vehicle running at its best. Choose from oil and filter changes, brake servicing, air conditioning, and more.</p>
+          <i class="fa-solid fa-wrench fa-5x" style="color: #000000;"></i>
+        </div>
+        <div class="service-card">
+          <h2>Specialised Repairs</h2>
+          <p>Schedule a major or minor repair with our expert technicians. We’ll diagnose and resolve the problem efficiently and professionally.</p>
+          <i class="fa-solid fa-screwdriver-wrench fa-5x" style="color: #000000;"></i>
+        </div>
+        <div class="service-card">
+          <h2>Cleaning Services</h2>
+          <p>Keep your car looking fresh with interior, exterior, or full detail cleaning services to restore shine and comfort.</p>
+          <i class="fa-solid fa-hand-sparkles fa-5x" style="color: #000000;"></i>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>Why Choose AMW?</h2>
+      <p>AMW is a trusted name in vehicle servicing, with locations across Australia. We offer reliable service — from minor repairs to inspections.</p>
+      <ul>
+        <li>Licensed and experienced staff</li>
+        <li>State-of-the-art facilities</li>
+        <li>Appointments via phone or online</li>
+        <li>Closed on public holidays</li>
+      </ul>
+    </section>
+
+<section class="info-section">
+  <div class="info-text">
+    <h2>Our Core Services</h2>
+    <p>We offer:</p>
+    <ul>
+      <li>Interior and exterior cleaning</li>
+      <li>Minor and major repairs</li>
+      <li>Oil changes and logbook servicing</li>
+      <li>Vehicle inspections</li>
+    </ul>
+  </div>
+  <div class="info-image">
+    <img src="https://airtasker-seo-assets-prod.s3.amazonaws.com/en_AU/1695029037103-Car-service.jpg" alt="Car Service">
+  </div>
+</section>
+
+<section class="info-section reverse">
+  <div class="info-text">
+    <h2>Book an Appointment</h2>
+    <p>Appointments only — book online or via our call centre for guaranteed service slots.</p>
+  </div>
+  <div class="info-image">
+    <img src="https://www.asset.edu.au/wp-content/uploads/2022/06/call-centre-team-leader-working.jpg" alt="Call Centre Booking">
+  </div>
+</section>
+
+<section class="info-section">
+  <div class="info-text">
+    <h2>Modern Facilities</h2>
+    <p>Each AMW centre features a garage, inspection unit, and admin office — fully equipped to handle your vehicle's needs.</p>
+  </div>
+  <div class="info-image">
+    <img src="https://www.mansfieldmotors.com.au/media/k2/items/cache/461011bcaf5b5e723e897c33f049f169_XL.jpg" alt="AMW Facilities">
+  </div>
+</section>
+    <section class="faq">
+      <h1>FREQUENTLY ASKED</h1>
+
+      <div class="faq-item">
+        <button class="faq-question">What services do you offer?</button>
+        <div class="faq-answer">
+          <p>Mechanical repairs, servicing, and high-quality vehicle cleaning.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How can I book?</button>
+        <div class="faq-answer">
+          <p>Book online via our website or by calling us directly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">When are you open?</button>
+        <div class="faq-answer">
+          <p>Monday to Saturday, 8:00 AM – 6:00 PM. Closed public holidays.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do you offer warranties?</button>
+        <div class="faq-answer">
+          <p>Yes! All services and repairs include a warranty. Ask us for details.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How can I contact you?</button>
+        <div class="faq-answer">
+          <p>Via our contact page, phone, or email. We're happy to help.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AMW Service Centre. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle FAQ answers
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle('show-answer');
+      });
+    });
+  </script>
+</body>
+</html>

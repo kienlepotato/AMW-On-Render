@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete User</title>
+  <link rel="stylesheet" href="/vehiclestyle.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="/amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/myappointments">My Appointments</a></li>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+      <li><a href="/adminbooking">Admin Booking</a></li>
+      <li><a href="/adduser">Add User</a></li>
+      <li><a href="/deleteuser">Remove User</a></li>
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+
+  <h1>Delete User by User ID</h1>
+
+  <% if (success) { %>
+    <p style="color: green;"><%= success %></p>
+  <% } %>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+  <% } %>
+
+  <form action="/deleteuser" method="POST" style="max-width: 400px; margin: auto;">
+    <label for="userId">Enter User ID to Delete:</label><br>
+    <input type="number" name="userId" id="userId" required><br><br>
+    <button type="submit" style="padding: 10px 20px; background-color: red; color: white;">Delete User</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Car Service</title>
+  <!-- <link rel="stylesheet" href="ContactUsStyles.css"/> -->
+  <link rel="stylesheet" href="ContactUsStyles.css"/>
+</head>
+<body>
+      <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/services">Our Services</a></li> 
+           <% if (user) { %>
+    <!-- User logged in: show logout -->
+    <li>
+      <form action="/logout" method="get" style="display:inline;">
+        <button type="submit" class="register-btn">Logout</button>
+      </form>
+    </li>
+  <% } else { %>
+    <!-- User not logged in: show login -->
+    <li><a href="/login" class="register-btn">Login</a></li>
+  <% } %>
+    </ul>
+  </nav>
+  <header>
+    <h1>Contact Us</h1>
+    <h3>Find Your Closest AMW Car Service Centre Location</h3>
+  </header>
+
+  <main class="locations">
+    <div class="location-card">
+      <h2>Belconnen</h2>
+      <ul>
+        <li>✅ Car Servicing</li>
+        <li>✅ Repairs</li>
+        <li>✅ Cleaning</li>
+      </ul>
+      <p><strong>Phone:</strong> (123) 456-7890</p>
+    </div>
+
+    <div class="location-card">
+      <h2>Gungahlin</h2>
+      <ul>
+        <li>✅ Car Servicing</li>
+        <li>✅ Repairs</li>
+        <li>✅ Cleaning</li>
+      </ul>
+      <p><strong>Phone:</strong> (987) 654-3210</p>
+    </div>
+
+    <div class="location-card">
+      <h2>City</h2>
+      <ul>
+        <li>✅ Car Servicing</li>
+        <li>✅ Repairs</li>
+        <li>✅ Cleaning</li>
+      </ul>
+      <p><strong>Phone:</strong> (555) 123-4567</p>
+    </div>
+
+    <div class="location-card">
+      <h2>Woden</h2>
+      <ul>
+        <li>✅ Car Servicing</li>
+        <li>✅ Repairs</li>
+        <li>✅ Cleaning</li>
+      </ul>
+      <p><strong>Phone:</strong> (800) 321-9876</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 AMW Car Service & Repair Center | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

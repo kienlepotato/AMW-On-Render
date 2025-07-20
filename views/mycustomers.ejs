@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Customers</title>
+  <link rel="stylesheet" href="/vehiclestyle.css">
+</head>
+<body>
+
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/myappointments">My Appointments</a></li>
+       <% if (user.role === 'MECHANIC') { %>
+      <li><a href="/mycustomers">My Customers</a></li>
+ <% } %>     
+      <% if (user.role === 'SUPERVISOR') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>
+      <% if (user.role === 'ADMIN') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+      <li><a href="/adminbooking">Admin Booking</a></li>
+      <li><a href="/adduser">Add User</a></li>
+      <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+  <h1>My Customers</h1>
+  <% customers.forEach(c => { %>
+    <div class="customer-card" style="border:1px solid #ccc; margin-bottom: 30px; padding: 15px; border-radius: 10px;">
+    <h2><%= c.FirstName %> <%= c.LastName %></h2>
+    <p>
+      <p>User ID: <%= c.UserID %> </p>
+      <strong>Email:</strong> <a href="mailto:<%= c.EmailAddress %>"><%= c.EmailAddress %></a><br>
+      <strong>Phone:</strong> <a href="tel:<%= c.PhoneNumber %>"><%= c.PhoneNumber %></a>
+    </p>
+     
+      <h3>Vehicles:</h3>
+      <% if (c.Vehicles.length === 0) { %>
+        <p>No vehicles on record.</p>
+      <% } else { %>
+        <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse: collapse;">
+          <thead style="background-color: #f2f2f2;">
+            <tr>
+              <th>Registration</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>Colour</th>
+              <% if (user.role === 'ADMIN') { %>
+    <th>Actions</th>
+  <% } %>
+            </tr>
+          </thead>
+          <tbody>
+            <% c.Vehicles.forEach(v => { %>
+              <tr>
+                <td><%= v.Registration %></td>
+                <td><%= v.Make %></td>
+                <td><%= v.Model %></td>
+                <td><%= v.Year %></td>
+                <td><%= v.Colour %></td>
+                  <% if (user.role === 'ADMIN') { %>
+        <td>
+          <form action="/mycustomers/delete-vehicle" method="POST" onsubmit="return confirm('Are you sure you want to delete this vehicle?');">
+            <input type="hidden" name="registration" value="<%= v.Registration %>">
+            <button type="submit" style="color: red;">Delete</button>
+          </form>
+        </td>
+      <% } %>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+      <% if (user.role === 'ADMIN') { %>
+
+
+      <h4 style="margin-top: 20px;">Add New Vehicle:</h4>
+<form action="/mycustomers/add-vehicle" method="POST" style="margin-top: 15px;">
+  <input type="hidden" name="userId" value="<%= c.UserID %>">
+
+  <div style="display: grid; grid-template-columns: 150px 1fr; gap: 10px 15px; align-items: center; margin-bottom: 15px;">
+    <label for="reg-<%= c.UserID %>">Registration:</label>
+    <input id="reg-<%= c.UserID %>" name="registration" required>
+
+    <label for="make-<%= c.UserID %>">Make:</label>
+    <input id="make-<%= c.UserID %>" name="make" required>
+
+    <label for="model-<%= c.UserID %>">Model:</label>
+    <input id="model-<%= c.UserID %>" name="model" required>
+
+    <label for="year-<%= c.UserID %>">Year:</label>
+    <input id="year-<%= c.UserID %>" name="year" type="number" required>
+
+    <label for="colour-<%= c.UserID %>">Colour:</label>
+    <input id="colour-<%= c.UserID %>" name="colour" required>
+  </div>
+
+  <button type="submit" style="padding: 8px 16px;">Add Vehicle</button>
+</form>
+<% } %>
+    </div>
+  <% }) %>
+</body>
+</html>

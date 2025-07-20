@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <!-- <link rel="stylesheet" href="ContactUsStyles.css"> -->
+     <link rel="stylesheet" href="servicestyle.css">
+</head>
+<body>
+        <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/customerbooking">Book Appointment</a></li>
+      <li><a href="/myvehicles">My Vehicles</a></li>
+      <li><a href="/myappointments">My Appointments</a></li>
+      
+      <% if (user) { %>
+    <!-- User logged in: show logout -->
+    <li>
+      <form action="/logout" method="get" style="display:inline;">
+        <button type="submit" class="register-btn">Logout</button>
+      </form>
+    </li>
+  <% } else { %>
+    <!-- User not logged in: show login -->
+    <li><a href="/login" class="register-btn">Login</a></li>
+  <% } %>
+    </ul>
+  </nav>
+
+<% if (success) { %>
+  <div style="background: #d4edda; color: #155724; padding: 15px; margin: 10px; border: 1px solid #c3e6cb; border-radius: 5px;">
+    ✅ <%= success %>
+  </div>
+<% } %>
+
+<% if (error) { %>
+  <div style="background: #f8d7da; color: #721c24; padding: 15px; margin: 10px; border: 1px solid #f5c6cb; border-radius: 5px;">
+    ⚠️ <%= error %>
+  </div>
+<% } %>  
+
+    <header>
+        <h1>AMW </h1>
+        <h3>Find The Quality Car Service You Need</h3>
+</header>
+
+   <section id="service-booking">
+  <h2>Car Servicing</h2>
+  <p>Routine servicing is key to keeping your vehicle safe, efficient, and roadworthy. At AMW, we offer flexible servicing options tailored to your car’s age, condition, and usage.</p>
+
+  <p><strong>General Service:</strong></p>
+  <ul>
+    <li>Engine oil and filter change</li>
+    <li>Fluid level checks and top-ups</li>
+    <li>Tyre pressure and tread inspection</li>
+    <li>Battery health check</li>
+    <li>Basic brake and lighting system inspection</li>
+  </ul>
+
+  <p><strong>Essential Service:</strong></p>
+  <ul>
+    <li>Air and cabin filter replacements</li>
+    <li>Brake and suspension checks</li>
+    <li>Steering and underbody inspection</li>
+    <li>Safety system diagnostics</li>
+  </ul>
+
+  <p><strong>Specific Service:</strong></p>
+  <ul>
+    <li>Oil & filter service</li>
+    <li>Brake & clutch servicing</li>
+    <li>Cooling system flush</li>
+    <li>Timing belt replacement</li>
+    <li>Transmission servicing</li>
+  </ul>
+<a href="/bookservice" class="booknow-btn">Book Now</a>
+<img src="https://images.airtasker.com/v7/https://airtasker-seo-assets-prod.s3.amazonaws.com/en_AU/1668557803093_shutterstock_1470455069.jpg?gravity=smart&w=1600&h=1200" alt="AMW Car Service" class="section-image" />
+
+</section>
+
+<section id="repair-booking">
+  <h2>Car Repairs</h2>
+  <p>From worn-out brakes to more complex mechanical issues, AMW provides a full spectrum of vehicle repair services. Our qualified technicians use modern diagnostics and genuine parts to ensure reliable results.</p>
+
+  <p><strong>Minor Repairs:</strong></p>
+  <p>Quick fixes like replacing lights, wiper blades, fluid top-ups, and minor adjustments — all performed with efficiency and care.</p>
+
+  <p><strong>Major Repairs:</strong></p>
+  <p>We handle larger mechanical jobs including engine work, suspension overhauls, brake systems, exhausts, and drivetrain components.</p>
+
+  <p><strong>Specific Repairs:</strong></p>
+  <p>Tailored to the exact issue you're facing — whether it's a check engine light, electrical fault, or something unique — we’ll diagnose and fix it quickly and affordably.</p>
+<a href="/bookrepair" class="booknow-btn">Book Now</a>
+  <img src="https://valleycollision.com/wp-content/uploads/2021/11/repairing-car-in-garage-2021-08-26-19-52-40-utc-scaled-e1637609666696.jpg" alt="AMW Car Repair" class="section-image" />
+
+</section>
+
+<section id="car-cleaning">
+  <h2>Car Cleaning</h2>
+  <p>Keep your vehicle looking its best with AMW’s professional cleaning services. Whether you're after a quick wash or a detailed clean, we offer convenient and affordable packages.</p>
+
+  <p><strong>Interior Clean:</strong></p>
+  <p>Vacuuming of seats and carpets, dashboard and trim dusting, window cleaning, and deodorising.</p>
+
+  <p><strong>Exterior Clean:</strong></p>
+  <p>High-pressure wash, hand-drying, tyre shine, and streak-free window polish.</p>
+
+  <p><strong>Full Clean:</strong></p>
+  <p>A complete package that combines both interior and exterior cleaning, giving your car a showroom-ready finish inside and out.</p>
+<a href="/bookclean" class="booknow-btn">Book Now</a>
+<img src="https://airtasker-seo-assets-prod.s3.amazonaws.com/en_AU/1741769350723-car-wash-cost-hero.jpg" alt="AMW Car Clean" class="section-image" />
+
+</section>
+
+
+</body>
+</html>

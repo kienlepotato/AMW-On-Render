@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title>
+ <!-- <link rel="stylesheet" href="ContactUsStyles.css"> -->
+ <link rel="stylesheet" href="login_style.css">
+</head>
+<body>
+  <!-- <h2>Login</h2>
+  <% if (error) { %><p style="color:red"><%= error %></p><% } %>
+  <form action="/login" method="POST">
+    <input name="email" placeholder="Email Address" required>
+    <input name="password" type="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <h2>Don't have an account?</h2>
+  <form action="/signup" method="get">
+    <button type="submit">Sign Up</button>
+  </form> -->
+
+<!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <a href="/" class="car-icon-link">
+            <img src="amw-logo-1.png" alt="Car Icon" class="car-icon"/>
+          </a>
+      </div>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Book Appointment</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a class="register-btn" href="/signup">Register</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content with login box -->
+<!-- Main content with login box -->
+<main>
+  <div class="login-wrapper">
+    <div class="login-box">
+      <h2>Log In</h2>
+      <p>Welcome back! Log in to access<br> your AMW account.</p>
+
+      <!-- Login form -->
+      <form action="/login" method="POST">
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Type your email" required />
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Type your password" required />
+
+        <button type="submit">Log In</button>
+        <div class="form-links">
+          <a href="/signup">New to AMW?</a>
+          <a href="/forgot">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- OR sign-up button -->
+      <form action="/signup" method="GET" style="margin-top: 1em;">
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <div class="logo footer-logo">
+        <img src="amw-logo-1.png" alt="Car Icon" class="car-icon-footer"/>
+      </div>
+    </div>
+    <!-- <div class="footer-center">
+      <ul>
+        <li><a href="#">Our services</a></li>
+        <li><a href="#">Book an appointment</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-right">
+      <label for="email">Email:</label>
+      <input type="email" placeholder="Enter your email here" />
+      <button>Submit</button>
+    </div> -->
+  </footer>
+
+
+</body>
+
+
+</html>

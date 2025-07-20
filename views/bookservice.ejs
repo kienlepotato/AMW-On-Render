@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Service Appointment</title>
+  <link rel="stylesheet" href="bookstyle.css">
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/myappointments">My Appointments</a></li>
+      <li><a href="/myvehicles">My Vehicles</a></li>
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+  <header>
+      
+    <h1>Book Car Servicing Appointment</h1>
+    <h3>Book the Service Your Vehicle Needs</h3>
+
+    <% if (user) { %>
+      <h3 style="text-align: right; margin-right: 20px;">
+        Booking Appointment For: <strong><%= user.name %></strong> | <strong><%= user.email %></strong>
+      </h3>
+    <% } %>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contactus">Contact Us</a></li>
+        <li><a href="/bookservice">Book a Car Service</a></li>
+        <li><a href="/bookrepair">Book a Car Repair</a></li>
+        <li><a href="/bookclean">Book a Car Cleaning</a></li>
+        <li><a href="/myvehicles">My Vehicles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <form method="POST" action="/serviceappointments">
+    <p>First Name</p>
+    <input type="text" name="first_name" value="<%= user.firstname %>" readonly required><br>
+
+    <p>Last Name</p>
+    <input type="text" name="last_name" value="<%= user.lastname %>" readonly required><br>
+
+    <p>Mobile Phone Number</p>
+    <input type="text" name="contact_number" value="<%= user.phonenumber %>" readonly required><br>
+
+    <p>Vehicle Registration</p>
+    <input type="text" name="registration" placeholder="e.g abc123" required><br>
+
+    <p>Email Address</p>
+    <input type="text" name="email_address" value="<%= user.email %>" readonly required><br>
+
+    <p>Odometer (in KM)</p>
+    <input type="number" name="odometer_km" required><br>
+
+    <p>Logbook Interval (e.g. 10,000KM)</p>
+    <input type="text" name="logbook_interval" placeholder="e.g. 10000" required><br>
+
+    <p>Service Type</p>
+    <select name="service_type" required>
+      <option value="">Select Service Type</option>
+      <option value="GENERAL">General</option>
+      <option value="ESSENTIAL">Essential</option>
+      <option value="SPECIFIC">Specific</option>
+    </select><br>
+
+    <p>Specific Service Request</p>
+    <input type="text" name="specific_service" placeholder="Optional (e.g. check brakes)"><br>
+
+    <hr>
+    <h3>Optional Cleaning</h3>
+
+    <p>Cleaning Type (optional)</p>
+    <select name="clean_type">
+      <option value="">No Cleaning</option>
+      <option value="exterior">Exterior</option>
+      <option value="interior">Interior</option>
+      <option value="full">Full Clean</option>
+    </select><br>
+
+    <hr>
+
+    <p>Appointment Date</p>
+    <input type="date" name="appointment_date" min="<%= new Date().toISOString().split('T')[0] %>" required><br>
+
+    <p>Appointment Time</p>
+        <select name="time_slot" required>
+  <option value="">Select a time slot</option>
+  <option value="08:00">08:00 - 09:00</option>
+  <option value="09:00">09:00 - 10:00</option>
+  <option value="10:00">10:00 - 11:00</option>
+  <option value="11:00">11:00 - 12:00</option>
+  <option value="12:00">12:00 - 13:00</option>
+  <option value="13:00">13:00 - 14:00</option>
+  <option value="14:00">14:00 - 15:00</option>
+  <option value="15:00">15:00 - 16:00</option>
+  <option value="16:00">16:00 - 17:00</option>
+  <option value="17:00">17:00 - 18:00</option>
+</select><br>
+
+    <p>Appointment Location</p>
+    <select name="location" required>
+      <option value="">Select Location</option>
+      <option value="location 1">Location 1</option>
+      <option value="location 2">Location 2</option>
+      <option value="location 3">Location 3</option>
+      <option value="location 4">Location 4</option>
+    </select><br>
+
+    <button type="submit">Book Service</button>
+  </form>
+
+  <footer>
+    <p>© 2025 AMW Car Service & Repair Center | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

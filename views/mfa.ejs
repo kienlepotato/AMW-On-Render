@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MFA Verification</title>
+  <link rel="stylesheet" href="/mfa_style.css">
+  <<body>
+  <div class="mfa-wrapper">
+    <div class="mfa-box">
+      <h2>Multi-Factor Authentication</h2>
+
+      <% if (error) { %>
+        <p class="error"><%= error %></p>
+      <% } %>
+
+      <form action="/mfa" method="POST">
+        <input name="code" type="text" pattern="\d{6}" placeholder="MFA Code" required>
+
+        <!-- <label for="remember_device" class="checkbox-label">
+          <input type="checkbox" name="remember_device" id="remember_device">
+          Remember this device
+        </label> -->
+
+        <button type="submit">Verify</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

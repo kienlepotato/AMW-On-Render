@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #eee;
+    }
+
+    .total {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+  
+  <div>
+    <img src="<%= logo %>" alt="Logo" style="height: 80px;">
+  </div>
+  <h1>Invoice</h1>
+   </div>
+
+  <p><strong>Customer:</strong> <%= customerName %></p>
+  <p><strong>Email:</strong> <%= email %></p>
+  <p><strong>Vehicle:</strong> <%= vehicle %></p>
+  <p><strong>Date:</strong> <%= date %></p>
+  <p><strong>Time:</strong> <%= time %></p>
+  <p><strong>Location:</strong> <%= location %></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Service Type</th>
+        <th>Details</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+        <tr>
+          <td><%= item.type %></td>
+          <td><%= item.detail %></td>
+          <td>$<%= item.cost %></td>
+        </tr>
+      <% }); %>
+      <tr>
+        <td colspan="2" class="total">Total</td>
+        <td class="total">$<%= total %></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

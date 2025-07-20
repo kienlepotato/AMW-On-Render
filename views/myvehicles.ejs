@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Vehicles</title>
+  <link rel="stylesheet" href="/vehiclestyle.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/" class="car-icon-link">
+        <img src="amw-logo-1.png" alt="Logo" class="car-icon">
+      </a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/myappointments">My Appointments</a></li>
+      <li><a href="/myvehicles">My Vehicles</a></li>
+             <% if (user.role === 'MECHANIC') { %>
+      <li><a href="/mycustomers">My Customers</a></li>
+ <% } %>     
+      <% if (user.role === 'SUPERVISOR') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+<% } %>
+      <% if (user.role === 'ADMIN') { %>
+      <li><a href="/mymechanics">My Staff</a></li>
+      <li><a href="/mycustomers">My Customers</a></li>
+      <li><a href="/adminbooking">Admin Booking</a></li>
+      <li><a href="/adduser">Add User</a></li>
+      <li><a href="/deleteuser">Remove User</a></li>
+<% } %>
+      <li><a href="/logout" class="register-btn">Sign Out</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="register-wrapper">
+    <div class="register-box login-box">
+      <h1>My Vehicles</h1>
+      <p>Logged in as <strong><%= user.name %></strong> (<strong><%= user.role %></strong>)</p>
+
+      <h2>Add New Vehicle</h2>
+      <form action="/myvehicles/add" method="POST">
+        <input name="registration" placeholder="Registration" required>
+        <input name="make" placeholder="Make" required>
+        <input name="model" placeholder="Model" required>
+        <input type="number" name="year" placeholder="Year" required>
+        <input name="colour" placeholder="Colour" required>
+<div class="full-width">
+  <label for="lastservicedate">Date of Last Service</label>
+  <input type="date" id="lastservicedate" name="lastservicedate" required>
+</div>
+        <button type="submit">Add Vehicle</button>
+      </form>
+
+      <h2>My Registered Vehicles</h2>
+      <% if (vehicles.length === 0) { %>
+        <p>No vehicles found.</p>
+      <% } else { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Registration</th><th>Make</th><th>Model</th><th>Year</th><th>Colour</th><th>Last Service</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vehicles.forEach(v => { %>
+              <tr>
+                <td><%= v.Registration %></td>
+                <form action="/myvehicles/update/<%= v.Registration %>" method="POST">
+                  <td><input name="make" value="<%= v.Make %>" required></td>
+                  <td><input name="model" value="<%= v.Model %>" required></td>
+                  <td><input type="number" name="year" value="<%= v.Year %>" required></td>
+                  <td><input name="colour" value="<%= v.Colour %>" required></td>
+                  <td><input type="date" name="lastservicedate" value="<%= v.LastServiceDate %>" required></td>
+                  <td>
+                    <button type="submit">Update</button>
+                </form>
+                <form action="/myvehicles/delete/<%= v.Registration %>" method="POST" style="display:inline-block;">
+                    <button type="submit" onclick="return confirm('Delete vehicle <%= v.Registration %>?')">Delete</button>
+                </form>
+                  </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } %>
+
+      <p class="form-links"><a href="/">Back to Home</a></p>
+    </div>
+  </main>
+
+</body>
+</html>

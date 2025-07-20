@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <!-- <link rel="stylesheet" href="SignupStyles.css"/> -->
+   <link rel="stylesheet" href="register_style.css"/>
+</head>
+<body>
+  <!-- <div class="signup-container">
+    <h2>Create Account</h2>
+    <form action="/signup" method="POST">
+  <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
+  <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
+  <input type="tel" name="phone" id="phone" placeholder="Phone Number" required pattern="[\d\s\-\+]{7,15}" title="Enter a valid phone number" />
+  <input type="email" name="email" id="email" placeholder="Email" required />
+  <input type="password" name="password" id="password" placeholder="Password" required />
+  <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required />
+  <button type="submit">Sign Up</button>
+  <p id="error" class="error"></p>
+</form>
+  </div> -->
+  <!-- <script src="script.js"></script> -->
+
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <a href="/" class="car-icon-link">
+            <img src="amw-logo-1.png" alt="Car Icon" class="car-icon"/>
+          </a>
+      </div>
+    </div>
+    <ul class="nav-right">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Book Appointment</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+      <li><a href="/contactus">Contact Us</a></li>
+      <li><a href="/login">Log In</a></li>
+      <li><a class="register-btn" href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+<!-- Main content-->
+<main>
+  <div class="register-wrapper">
+    <div class="register-box">
+      <h2>Register</h2>
+      <p>New to AMW? Sign up with your details below:</p>
+      <form action="/signup" method="POST">
+        <label>First Name *</label>
+        <input type="text" name="firstName" id="firstName" placeholder="Type your first name" required />
+
+        <label>Last Name *</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Type your last name" required />
+
+        <label>Email Address *</label>
+        <input type="email" name="email" id="email" placeholder="Type your email address" required />
+
+        <label>Phone Number *</label>
+        <input type="tel" name="phone" id="phone" placeholder="Type your phone number" required pattern="[\d\s\-\+]{7,15}" title="Enter a valid phone number" />
+
+        <label>Password *</label>
+        <input type="password" name="password" id="password" placeholder="Type your password" required />
+
+        <label>Confirm Password *</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password" required />
+
+        <button type="submit">Register</button>
+        <p id="error" class="error"></p>
+      </form>
+    </div>
+  </div>
+</main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <div class="logo footer-logo">
+        <img src="amw-logo-1.png" alt="Car Icon" class="car-icon-footer"/>
+      </div>
+    </div>
+    <!-- <div class="footer-center">
+      <ul>
+        <li><a href="#">Our services</a></li>
+        <li><a href="#">Book an appointment</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-right">
+      <label for="email">Email:</label>
+      <input type="email" placeholder="Enter your email here" />
+      <button>Submit</button>
+    </div> -->
+  </footer>
+
+</body>
+</html>
