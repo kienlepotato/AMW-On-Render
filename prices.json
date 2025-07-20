@@ -1,0 +1,17 @@
+{
+  "clean": {
+    "exterior": 50,
+    "interior": 60,
+    "full": 100
+  },
+  "repair": {
+    "minor_repair": 150,
+    "major_repair": 200,
+    "specific": 300
+  },
+  "service": {
+    "general": 100,
+    "essential": 180,
+    "specific": 170
+  }
+}
