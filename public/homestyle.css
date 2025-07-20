@@ -1,0 +1,275 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2f3a;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.car-icon {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.car-icon-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-right li a {
+  text-decoration: none;
+  color: white;
+}
+
+.register-btn {
+  color: black !important;
+  background-color: #83c441;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+/* Header Section */
+header {
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* Section Styling */
+section {
+  margin: 40px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+section h2 {
+  color: #34495e;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+section p, section ul {
+  color: #2b2d42;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+section ul {
+  padding-left: 20px;
+}
+
+.section-image {
+  display: block;
+  max-width: 30%;
+  height: auto;
+  margin: 20px auto 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  float: right;
+}
+
+/* Footer */
+footer {
+  background-color: #2b2d42;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .nav-right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .section-image {
+    width: 100%;
+  }
+}
+
+
+/* Front-page image */
+.front-page-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+/* Front-page image */
+.front-page-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Services section */
+.services {
+  text-align: center;
+  padding: 40px;
+}
+
+.services h1 {
+  font-size: 35px;
+  margin-bottom: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2d3047;
+}
+
+.services p {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #3f3f3f;
+}
+
+/* Service cards container */
+.service-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Individual service card */
+.service-card {
+  flex: 1;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 3px #4d516d;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2d3047;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Hover effect for service cards */
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px #4d516d;
+}
+
+.faq {
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+}
+
+.faq-question {
+  cursor: pointer;
+  background-color: #e0e0e0;
+  padding: 1rem;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+}
+
+.faq-answer {
+  display: none;
+  padding: 1rem;
+  background-color: #fff;
+  border-left: 3px solid #333;
+}
+
+.faq-answer.show-answer {
+  display: block;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.info-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.info-text {
+  flex: 1 1 300px;
+  max-width: 600px;
+}
+
+.info-image {
+  flex: 1 1 300px;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.info-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}

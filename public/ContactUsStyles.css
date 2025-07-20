@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #333;
+  }
+  
+  header {
+    background-color: #2b2d42;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .locations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .location-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .location-card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: #2b2d42;
+  }
+  
+  .location-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 1rem;
+  }
+  
+  .location-card ul li {
+    margin-bottom: 0.3rem;
+  }
+  
+  footer {
+    background-color: #2b2d42;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+   /* Navigation Bar Styles */
+   /* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2f3a;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.car-icon {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.car-icon-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-right li a {
+  text-decoration: none;
+  color: white;
+}
+
+.register-btn {
+  color: black !important;
+  background-color: #83c441;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+
+/* form styles */
+form {
+  background-color: #ffffff;
+  padding: 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+   /* Center horizontally */
+   margin: 30px auto;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2980b9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1f6391;
+}
+
+ /* Section Styling */
+ section {
+  margin: 40px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  color: #34495e;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  /* color: #7f8c8d; */
+  color: #2b2d42;
+  margin-bottom: 1px;
+}
+h3 {
+  color: #ffffff;
+  /* color: #2b2d42; */
+  margin-bottom: 1px;
+}

@@ -1,0 +1,408 @@
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d3047;
+  padding: 1rem 2rem;
+  flex-wrap: wrap; 
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.car-icon {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.car-icon-link {
+  text-decoration: none; 
+  display: inline-block; 
+}
+
+/* Navigation links */
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap; 
+}
+
+.nav-right li a {
+  text-decoration: none;
+  color: white;
+}
+
+.register-btn {
+  color:black !important;
+  background-color: #85cb33;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+/* Hamburger menu button */
+.hamburger-menu {
+  display: none; 
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+      max-width: 100%; 
+  }
+
+  .footer-right input {
+      width: 100%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+      justify-content: flex-start; 
+  }
+
+  .nav-right {
+      flex-direction: column; 
+      gap: 1rem; 
+      width: 100%; 
+  }
+
+  .nav-right li a {
+      text-align: left;
+  }
+
+  .register-btn {
+      align-self: flex-start; 
+  }
+
+  .logo {
+      margin-right: auto; 
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block; 
+  }
+
+  .nav-right {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100px;
+  width: 250px;
+  background-color: #2d3047;
+  padding: 2rem 1rem;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+}
+
+  .nav-right.show {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .hamburger-menu {
+    display: block;
+    position: relative;
+    z-index: 1100; 
+  }
+}
+
+/* Main Content */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the appointment form */
+.appointment-section {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-section h1 {
+    text-align: center;
+    color: #2d3047;
+    margin-bottom: 2rem;
+}
+
+.appointment-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #2d3047;
+    margin-bottom: 0.5rem;
+    display: block; /* Ensure the label is on its own line */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    margin-top: 0.5rem; /* Add spacing between the label and the textarea */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    resize: none;
+    height: 100px;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.checkbox-group label,
+.radio-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #2d3047;
+}
+
+.checkbox-group input,
+.radio-group input {
+    margin-right: 0.5rem;
+}
+
+.book-button {
+    grid-column: span 2;
+    background-color: #85cb33;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: #6fa832;
+}
+
+/* Dynamic Fields */
+#repair-types-group,
+#repair-other-group,
+#service-types-group,
+#service-other-group {
+    display: none; /* Hidden by default */
+}
+
+textarea:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Flatpickr Calendar */
+.flatpickr-calendar {
+    font-family: "Segoe UI", sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #2d3047;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem;
+  gap: 2rem;
+}
+
+.footer-center {
+  display: flex;
+  gap: 3rem;
+}
+
+.footer-center ul{
+  list-style: none;
+}
+
+.footer-center ul a{
+  text-decoration: none;
+  color: white;
+  line-height: 2;
+  justify-content: center;
+}
+
+.footer-right {
+  width: 100%; 
+  max-width: 300px; 
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+}
+
+.footer-right input {
+  padding: 0.4rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 100%; 
+  max-width: 100%; 
+  box-sizing: border-box; 
+  margin-bottom: 0.5rem;
+}
+
+.footer-right textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.footer-right button {
+  margin-top: 0.5rem;
+  align-self: flex-end;
+  background-color: #85cb33;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  color: white;
+  border-radius: 4px;
+  width: fit-content;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.footer-right h2 {
+  padding: 10px;
+  margin-bottom:12px;
+  color: black;
+  font-size: 20px;
+}
+.car-icon-footer{
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .footer-right {
+      max-width: 100%; 
+  }
+
+  .footer-right input {
+      width: 100%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+      justify-content: flex-start; 
+  }
+
+  .nav-right {
+      flex-direction: column; 
+      gap: 1rem; 
+      width: 100%; 
+  }
+
+  .nav-right li a {
+      text-align: left; 
+  }
+
+  .register-btn {
+      align-self: flex-start; 
+  }
+
+  .logo {
+      margin-right: auto; 
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+      display: block; 
+  }
+
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #2d3047;
+    padding: 2rem 1rem;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  .nav-right.show {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .hamburger-menu {
+    display: block;
+    position: relative;
+    z-index: 1100; 
+  }
+}

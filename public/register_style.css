@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background-color: #ffffff;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e2f3a;
+    padding: 1rem 2rem;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .car-icon {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  .car-icon-link {
+    text-decoration: none; 
+    display: inline-block; 
+  }
+    
+  .nav-right {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-right li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .register-btn {
+    color:black !important;
+    background-color: #83c441;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+  }
+  
+  /* Main */
+  .register-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+  
+  .register-box {
+    background: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 500px;
+    text-align: center;
+  }
+  
+  .register-box h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .register-box p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .register-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .register-box label {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .register-box input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .register-box button {
+    background-color: #83c441;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #2e2f3a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 3rem;
+    gap: 2rem;
+  }
+  
+  .footer-center {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .footer-center ul{
+    list-style: none;
+  }
+
+  .footer-center ul a{
+    text-decoration: none;
+    color: white;
+    line-height: 2;
+  }
+  
+  .footer-right {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+  }
+  
+  .footer-right label{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-right input {
+    padding: 0.4rem;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-right button {
+    margin-top: 0.5rem;
+    align-self: flex-end;
+    background-color: #83c441;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    color: white;
+    border-radius: 4px;
+    width: fit-content;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .car-icon-footer{
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+  }
+
+  html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-links a {
+    text-decoration: underline;
+  }
+  
+  .login-box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }

@@ -1,0 +1,217 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+}
+
+
+.customer-card p {
+  margin: 5px 0 15px 0;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.customer-card a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.customer-card a:hover {
+  text-decoration: underline;
+}
+
+
+/* Filter Buttons */
+.filter-btn {
+  background-color: #83c441;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  margin: 0.5rem 0.5rem 1.5rem 0;
+}
+
+.filter-btn:hover {
+  background-color: #6fa832;
+  box-shadow: 0 4px 12px rgba(131, 196, 65, 0.4);
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2f3a;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.car-icon {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.car-icon-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-right li a {
+  text-decoration: none;
+  color: white;
+}
+
+.register-btn {
+  color: black !important;
+  background-color: #83c441;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+/* Page Layout */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  flex: 1;
+}
+
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-box {
+  background: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.register-box h1, h2 {
+  margin-bottom: 1rem;
+}
+
+.register-box p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+form input,
+form button {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form input {
+  flex: 1 1 45%;
+}
+
+form button {
+  background-color: #83c441;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  flex: 1 1 100%;
+  border-radius: 20px;
+}
+
+form button:hover {
+  background-color: #6fa832;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fafafa;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #2e2f3a;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+/* Align form buttons in table */
+table form {
+  display: inline-block;
+}
+
+table button[type="submit"] {
+  margin: 0 0.2rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  background-color: #83c441;
+}
+
+table button[type="submit"]:hover {
+  background-color: #6fa832;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  form input {
+    flex: 1 1 100%;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 0.5rem;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
